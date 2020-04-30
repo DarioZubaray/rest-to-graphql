@@ -9,11 +9,13 @@ const type: IResolvers = {
     },
     Race: {
         name: parent => parent.raceName,
-        circuit: parent => parent.Circuit
+        circuit: parent => parent.Circuit,
+        urlMobile: parent => getWikipediaMobileUrl(parent.url)
     },
     Circuit: {
         id: parent => parent.circuitId,
         name: parent => parent.circuitName,
+        urlMobile: parent => getWikipediaMobileUrl(parent.url),
         location: parent => parent.Location
     },
     Location: {
