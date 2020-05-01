@@ -38,8 +38,15 @@ export class DriversData extends F1 {
     }
 
     async getDriver(id: string) {
-
         return await this.get(`drivers/${id}.json`, {
+            cacheOptions: { ttl: 60 }
+        });
+    }
+
+    async getSeasonPilotStanding(year: string) {
+        year = checkYear(year);
+
+        return await this.get(`${year}/driverStandings.json`, {
             cacheOptions: { ttl: 60 }
         });
     }
